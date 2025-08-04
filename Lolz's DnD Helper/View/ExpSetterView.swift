@@ -41,13 +41,22 @@ public struct ExpSetterView: View {
                         HStack {
                             Text(task.name)
                             Spacer()
-                            // Stepper to easily adjust the EXP value
                             Stepper(value: $task.expValue, in: 0...10000, step: 50) {
                                 Text("\(task.expValue) EXP")
                             }
+                            Button(action: {
+                                if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                                    tasks.remove(at: index)
+                                }
+                            }) {
+                                Image(systemName: "trash.fill")
+                                    .foregroundColor(.red)
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
                         }
+                        .padding(.vertical, 4)
                     }
-                    .onDelete(perform: deleteTask)
+
                 }
                 .listStyle(InsetGroupedListStyle())
                 
