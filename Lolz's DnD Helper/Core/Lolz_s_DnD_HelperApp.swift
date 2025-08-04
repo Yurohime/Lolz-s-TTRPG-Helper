@@ -11,7 +11,7 @@ import SwiftUI
 struct Lolz_s_DnD_HelperApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
