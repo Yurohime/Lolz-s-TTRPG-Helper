@@ -35,16 +35,6 @@
 			path = "Lolz's DnD Helper";
 			sourceTree = "<group>";
 		};
-		EF60F5652E40635800C5269B /* Lolz's DnD HelperTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Lolz's DnD HelperTests";
-			sourceTree = "<group>";
-		};
-		EF60F56F2E40635800C5269B /* Lolz's DnD HelperUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Lolz's DnD HelperUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				EF60F5572E40635700C5269B /* Lolz's DnD Helper */,
-				EF60F5652E40635800C5269B /* Lolz's DnD HelperTests */,
-				EF60F56F2E40635800C5269B /* Lolz's DnD HelperUITests */,
 				EF60F5562E40635700C5269B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				EF60F5642E40635800C5269B /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				EF60F5652E40635800C5269B /* Lolz's DnD HelperTests */,
-			);
 			name = "Lolz's DnD HelperTests";
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				EF60F56E2E40635800C5269B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				EF60F56F2E40635800C5269B /* Lolz's DnD HelperUITests */,
 			);
 			name = "Lolz's DnD HelperUITests";
 			packageProductDependencies = (
