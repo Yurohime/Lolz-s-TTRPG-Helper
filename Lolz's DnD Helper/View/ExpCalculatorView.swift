@@ -8,13 +8,10 @@
 import SwiftUI
 
 public struct ExpCalculatorView: View {
-    @EnvironmentObject var viewRouter: ViewRouter
     
-    // All players and all available tasks
+    @EnvironmentObject var viewRouter: ViewRouter
     @State private var players: [Player] = []
     @State private var tasks: [ExpTask] = []
-    
-    // Index to track the currently displayed player
     @State private var currentPlayerIndex: Int = 0
     
     public var body: some View {
@@ -25,10 +22,7 @@ public struct ExpCalculatorView: View {
                         .foregroundColor(.gray)
                         .padding()
                 } else {
-                    // Player navigation header
                     playerHeader
-                    
-                    // List of tasks for the current player
                     List {
                         Section(header: Text("Available Tasks")) {
                             if tasks.isEmpty {
@@ -48,7 +42,6 @@ public struct ExpCalculatorView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Back") {
-                        // Save changes before going back
                         saveAndExit()
                     }
                 }
@@ -60,7 +53,6 @@ public struct ExpCalculatorView: View {
         }
     }
     
-    // View for the player name and navigation buttons
     private var playerHeader: some View {
         VStack {
             Text(players[currentPlayerIndex].name)
@@ -92,17 +84,13 @@ public struct ExpCalculatorView: View {
         .background(Color(.systemGroupedBackground))
     }
     
-    // View for a single task row with a toggle
     private func taskRow(for task: ExpTask) -> some View {
         HStack {
-            // Binding to control the toggle
             let isCompletedBinding = Binding<Bool>(
                 get: {
-                    // Get the completion status from the player's dictionary
                     return players[currentPlayerIndex].completedTasks[task.id, default: false]
                 },
                 set: { isCompleted in
-                    // Update the completion status and recalculate EXP
                     players[currentPlayerIndex].completedTasks[task.id] = isCompleted
                     recalculateTotalExp()
                 }
@@ -140,7 +128,6 @@ public struct ExpCalculatorView: View {
     
     private func recalculateTotalExp() {
         let totalExp = tasks.reduce(0) { sum, task in
-            // If the task is completed for the current player, add its value to the sum
             if players[currentPlayerIndex].completedTasks[task.id, default: false] {
                 return sum + task.expValue
             }

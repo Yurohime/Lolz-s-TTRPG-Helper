@@ -7,20 +7,16 @@
 
 import Foundation
 
-// A new struct to define an experience task.
-// It's Codable for JSON saving and Identifiable for SwiftUI Lists.
 public struct ExpTask: Codable, Identifiable {
     public let id: UUID
     public var name: String
     public var expValue: Int
 }
 
-// The Player struct is updated to track completed tasks.
 public struct Player: Codable, Identifiable {
     public let id: UUID
     public var name: String
     public var exp: Int
-    // This dictionary will store [TaskID: isCompleted]
     public var completedTasks: [UUID: Bool]
 }
 
@@ -29,11 +25,9 @@ public class SaveManager {
     
     public static let shared = SaveManager()
     
-    // Filenames for our data
     private let playersFilename = "players.json"
     private let tasksFilename = "tasks.json"
     
-    // Generic function to get a file URL in the documents directory.
     private func getURL(for filename: String) -> URL {
         let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return directory.appendingPathComponent(filename)
